@@ -4,6 +4,9 @@
     "target": "es5",
     "module": "commonjs",
     "lib": ["es6", "DOM"],
+    "paths": {
+      "agora-rtc-sdk-ng": ["./lib/agora-rtc-sdk-ng.d.ts"]
+    },
     "allowJs": true,
     "declaration": true,
     "skipLibCheck": true,
@@ -16,5 +19,8 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "outDir": "./types"
-  }
+  },
+  "plugins": [
+    { "transform": "typescript-transform-paths" }
+  ]
 }
