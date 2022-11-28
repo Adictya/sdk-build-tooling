@@ -11,7 +11,7 @@ delete package.scripts
 module.exports = {
   mode:"development",
   entry: {
-    main: "./index.ts",
+    main: "./src/index.ts",
   },
   output: {
     filename: "index.js",
