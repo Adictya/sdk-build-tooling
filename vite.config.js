@@ -1,20 +1,19 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
+import { externalizeDeps } from "vite-plugin-externalize-deps";
 
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "./index.ts"),
-      formats: ["es", "umd"],
+      entry: resolve(__dirname, "./src/index.ts"),
+      formats: ["umd"],
       fileName: "super-sdk",
-      name: "super-sdk",
+      name: "AgoraSuperSdk",
     },
   },
   plugins: [
-    // This plugin doesn't work, doesn't resolve modules and ends up compiling type defs for ALL node_modules
-    // even though we are not using any in our source code, all of them are dev dependencies. So what needs to be done now
-    // is to take the webpack plugin that is being used in this project and re write it for vite
+    externalizeDeps(),
     dts({
       staticImport: true,
       insertTypesEntry: true,
